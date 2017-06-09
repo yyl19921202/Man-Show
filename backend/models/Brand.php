@@ -4,7 +4,7 @@ use yii\db\ActiveRecord;
 
 class Brand extends ActiveRecord{
     //定义一个图片字段
-    public $imgFile;
+//    public $imgFile;
 
     static public $status=['1'=>'正常','0'=>'隐藏','-1'=>'删除'];
 
@@ -16,7 +16,7 @@ class Brand extends ActiveRecord{
           [['intro'],'string'],
           [['sort','status'],'integer'],
           [['logo'],'string','max'=>255],
-            ['imgFile','file','extensions'=>['jpg','png','gif']],//图片上传的规则
+//            ['imgFile','file','extensions'=>['jpg','png','gif']],//图片上传的规则
         ];
     }
     public function attributeLabels()
@@ -26,7 +26,7 @@ class Brand extends ActiveRecord{
             'intro'=>'商品简介',
             'sort'=>'排序',
             'status'=>'状态',
-            'imgFile'=>'LOGO',
+            'logo'=>'LOGO',
         ];
     }
 }

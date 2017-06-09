@@ -45,6 +45,15 @@ return [
             'rules' => [
             ],
         ],
+//        //七牛插件
+//        'qiniu'=>[
+//            'class'=>\backend\components\Qiniu::className(),
+//            'up_host'=>'http://up-z2.qiniu.com',
+//              'accessKey'=>'lca6v54Qk-QIGDeCMqNKopIdfG3eAYm6q8MnNr9Y',
+//              'secretKey'=>'VidFByQAjl4DezQWZ-z2absA1lbc8CjD4ejS0Z9',
+//              'bucket'=>'hman-show',
+//              'domain'=>'ttp://or9r703mc.bkt.clouddn.com/',
+//        ]
 
     ],
     'params' => $params,
