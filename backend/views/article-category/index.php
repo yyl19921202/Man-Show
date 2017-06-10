@@ -1,4 +1,5 @@
-<?=\yii\bootstrap\Html::a('添加商品',['@web/article-category/add'],['class'=>'btn btn-warning'])?>
+<h2>分类列表</h2>
+<?=\yii\bootstrap\Html::a('添加分类商品',['@web/article-category/add'],['class'=>'btn btn-warning'])?>
 <table class="table table-hover table-bordered text-capitalize">
     <tr>
         <th>ID</th>

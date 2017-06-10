@@ -19,6 +19,7 @@ class ArticleCategoryController extends Controller{
                 var_dump($model->getErrors());exit;//打印错误信息
             }
         }
+
         return $this->render('add',['model'=>$model]);//返回
     }
 
