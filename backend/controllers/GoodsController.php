@@ -61,7 +61,7 @@ class GoodsController extends Controller{
         //搜索
         $query=Goods::find();
         if($data=\Yii::$app->request->get('data')){
-            $query->andWhere(['like','name',$data,]);
+            $query->andWhere(['like','name',$data]);
         }
         $goods=$query->all();
         return $this->render('index',['goods'=>$goods]);

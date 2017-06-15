@@ -1,4 +1,5 @@
 <?php
+echo '<h2><center>用户注册</center></h2>';
 $form=\yii\bootstrap\ActiveForm::begin();
 echo $form->field($model,'username');
 echo $form->field($model,'password_hash')->passwordInput();

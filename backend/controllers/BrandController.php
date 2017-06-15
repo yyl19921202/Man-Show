@@ -42,13 +42,13 @@ class BrandController extends Controller
     public function actionIndex()
     {
         //分页   总条数   当前显示地几页 每页显示多少条数据
-        $zid=Brand::find();
-        $brands = $zid->count();//寻找到数据 总共有多少条
-        $page=new Pagination([
+        $zid=Brand::find();//先找到这个表
+        $brands = $zid->count();//根据这个表统计里面总共有多少条数据
+        $page=new Pagination([//
             'totalCount'=>$brands,//总共数据
             'defaultPageSize'=>3,//每页显示多少条
         ]);
-        $brands=$zid->offset($page->offset)->limit($page->limit)->all();//取出每页显示数据的条数
+        $brands=$zid->offset($page->offset)->limit($page->limit)->all();//取出每页数据从哪条开始到那条结束
         return $this->render('index', ['brands' => $brands,'page'=>$page]);//返回到首页
     }
 
