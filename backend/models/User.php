@@ -1,11 +1,12 @@
 <?php
 namespace backend\models;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface{
     public $code;
-
+    public $roles;
     public function rules()
     {
         return [
@@ -15,6 +16,7 @@ class User extends ActiveRecord implements IdentityInterface{
 //            ['email','match','pattern'=>'/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/','message'=>'邮箱格式不正确'],
             ['email', 'unique'],
             ['email', 'email'],
+            ['roles','safe'],
         ];
     }
     public function attributeLabels()
@@ -26,9 +28,29 @@ class User extends ActiveRecord implements IdentityInterface{
             'code'=>'验证码',
         ];
     }
+    //用户和角色的关联
+    public static function getRole(){
+        //实力话对象
+        $authManager=\Yii::$app->authManager;
+        return ArrayHelper::map($authManager->getRoles(),'name','description');
+    }
+    //关联用户和角色
+    public function addRole(){
+        //实例化对象
+        $authManager=\Yii::$app->authManager;
+//        $this->validate($this->roles);exit;
+        foreach ($this->roles as $roleDescription){
+            $role=$authManager->getRole($roleDescription);
+            if($role)$authManager->assign($role,$this->id);
+        }
+    }
+
     public function beforeSave($insert)
     {
-        $this->auth_key=\Yii::$app->security->generateRandomString();//自动随机生成字符串
+        if($insert){
+            $this->auth_key=\Yii::$app->security->generateRandomString();//自动随机生成字符串
+        }
+
         return parent::beforeSave($insert);
     }
 

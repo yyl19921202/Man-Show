@@ -4,6 +4,7 @@ use backend\models\LoginForm;
 use backend\models\User;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
+use yii\rbac\Role;
 use yii\web\Controller;
 use yii\web\Request;
 
@@ -28,6 +29,9 @@ class UserController extends Controller{
             if($model->validate()){
                 $model->password_hash=\Yii::$app->security->generatePasswordHash($model->password_hash);
                 $model->save(false);
+                //用户给角色关联
+                $model->addRole();
+                //实例化对象
                 \Yii::$app->session->setFlash('success','恭喜你，注册成功！');
                 return $this->redirect(['user/login']);
             }
@@ -94,6 +98,7 @@ class UserController extends Controller{
         return $this->redirect(['user/login']);
     }
 
+
     //防止直接输入主页没有经过登陆可以进入的方法
     public function behaviors()
     {
@@ -108,9 +113,14 @@ class UserController extends Controller{
                     ],
                     [
                         'allow' => true,
-//                        'actions' => ['add','edit','delete','index','logout'],
+                        'actions' => ['add','edit','del','index','loginout','login'],
                         'roles' => ['@'],
-                    ]
+                    ],
+//                    [
+//                        'allow' => true,
+//                        'actions' => ['login'],
+//                        'roles' => ['@'],
+//                    ]
                 ]
             ]
         ];
