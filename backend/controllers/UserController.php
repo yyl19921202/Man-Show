@@ -108,12 +108,12 @@ class UserController extends Controller{
                 'rules' =>[
                     [
                         'allow' => true,
-                        'actions' => ['login','captcha','add'],
+                        'actions' => ['login','captcha','add','code'],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['add','edit','del','index','loginout','login'],
+                        'actions' => ['add','edit','del','index','loginout','login','code','captcha'],
                         'roles' => ['@'],
                     ],
 //                    [

@@ -18,7 +18,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'loginUrl'=>'login',
+            'loginUrl'=>['user/login'],
             'identityClass' => 'backend\models\User',
             'enableAutoLogin' => true, //自动登录必须是true这里
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
