@@ -38,4 +38,8 @@ class Goods extends ActiveRecord{
     public function getCategories(){
         return $this->hasOne(GoodsCategory::className(),['id'=>'goods_category_id']);
     }
+    //建立关系
+    public function getImgs(){
+        return $this->hasMany(Img::className(),['goods_id'=>'id']);
+    }
 }

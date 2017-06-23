@@ -20,6 +20,6 @@ class Img extends ActiveRecord{
     }
     //建立关系
     public function getImges(){
-        return $this->hasOne(Goods::className(),['id'=>'goods_id']);
+        return $this->hasMany(Goods::className(),['id'=>'goods_id']);
     }
 }
