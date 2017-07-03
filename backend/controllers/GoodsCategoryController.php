@@ -31,8 +31,7 @@ class GoodsCategoryController extends Controller{
 
         //获取所有分类数据
         $categories=GoodsCategory::find()->asArray()->all();
-//        $categories=array_merge(['name'=>'最上级','id'=>0,'parent_id'=>0],$categories);
-        return $this->render('add',['model'=>$model,'categories'=>$categories]);
+//        $categories=array_merge(['name'=>'最上级','id'=>0,'parent_id'=>0],$categories);        return $this->render('add',['model'=>$model,'categories'=>$categories]);
     }
 
         //显示列表
