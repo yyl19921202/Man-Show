@@ -36,8 +36,8 @@ class GoodsCategoryController extends Controller{
 
         //显示列表
     public function actionIndex(){
-           $goods=GoodsCategory::find()->all();
-
+//           $goods=GoodsCategory::find()->all();
+           $goods=GoodsCategory::find()->orderBy('tree','lft')->all();//按每棵树和左值进行排序
            return $this->render('index',['goods'=>$goods]);
     }
     //修改

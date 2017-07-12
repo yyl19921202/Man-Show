@@ -10,7 +10,7 @@
     <?php foreach ($goods as $good):?>
     <tr>
         <td><?=$good->id?></td>
-        <td><?=$good->name?></td>
+        <td><?=str_repeat('---',$good->depth).$good->name?></td>
         <td><?=$good->parent_id ? $good->parent->name:''?></td>
         <td><?=$good->intro?></td>
         <td>

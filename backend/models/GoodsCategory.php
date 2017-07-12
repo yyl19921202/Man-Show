@@ -63,7 +63,7 @@ class GoodsCategory extends \yii\db\ActiveRecord
             'intro' => '简介',
         ];
     }
-
+//以下三个都是无限级分类的方法
     public function behaviors() {
         return [
             'tree' => [
@@ -87,6 +87,9 @@ class GoodsCategory extends \yii\db\ActiveRecord
     {
         return new GoodsCategoryQuery(get_called_class());
     }
+
+
+
     //关联
     public function getChildren(){
         return $this->hasMany(self::className(),['parent_id'=>'id']);
